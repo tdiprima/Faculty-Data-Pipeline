@@ -10,7 +10,6 @@ Tests:
   - Node creation permissions
 """
 import requests
-import json
 import os
 import sys
 from datetime import datetime
@@ -28,10 +27,12 @@ DRUPAL_TOKEN_URL = f"{DRUPAL_BASE_URL}/rest/session/token"
 DRUPAL_NODE_URL = f"{DRUPAL_BASE_URL}/node?_format=json"
 DRUPAL_STATUS_URL = f"{DRUPAL_BASE_URL}/rest/type/node/{DRUPAL_CONTENT_TYPE}?_format=json"
 
+
 def print_status(message, status="INFO"):
     """Print formatted status message."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{timestamp}] {status}: {message}")
+
 
 def verify_config():
     """Verify required configuration is present."""
@@ -57,6 +58,7 @@ def verify_config():
     print_status(f"✅ Content Type: {DRUPAL_CONTENT_TYPE}")
     return True
 
+
 def test_drupal_accessibility():
     """Test if Drupal site is accessible."""
     print_status("Testing Drupal site accessibility...")
@@ -80,6 +82,7 @@ def test_drupal_accessibility():
     except requests.exceptions.RequestException as e:
         print_status(f"❌ Site accessibility error: {e}", "ERROR")
         return False
+
 
 def test_drupal_login():
     """Test Drupal login and return session cookies."""
@@ -139,6 +142,7 @@ def test_drupal_login():
         print_status(f"❌ Login error: {e}", "ERROR")
         return None
 
+
 def test_csrf_token(cookies):
     """Test CSRF token retrieval."""
     print_status("Testing CSRF token retrieval...")
@@ -166,6 +170,7 @@ def test_csrf_token(cookies):
     except requests.exceptions.RequestException as e:
         print_status(f"❌ Token retrieval error: {e}", "ERROR")
         return None
+
 
 def test_content_type(cookies, csrf_token):
     """Test if the content type exists and is accessible."""
@@ -207,6 +212,7 @@ def test_content_type(cookies, csrf_token):
     except requests.exceptions.RequestException as e:
         print_status(f"❌ Content type check error: {e}", "ERROR")
         return False
+
 
 def test_node_creation_permissions(cookies, csrf_token):
     """Test if we can create nodes (dry run)."""
@@ -270,6 +276,7 @@ def test_node_creation_permissions(cookies, csrf_token):
         print_status(f"❌ Node creation error: {e}", "ERROR")
         return False
 
+
 def main():
     """Main verification function."""
     print_status("=" * 60)
@@ -316,6 +323,7 @@ def main():
     print_status("-" * 40)
     print_status("✅ Drupal connection verification completed!")
     print_status("You can now use this configuration in faculty180_to_drupal.py")
+
 
 if __name__ == "__main__":
     main()

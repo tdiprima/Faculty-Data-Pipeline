@@ -19,10 +19,12 @@ FACULTY_API_URL = os.getenv("FACULTY_API_URL", "https://api.faculty180.com/v1/fa
 FACULTY_API_TOKEN = os.getenv("FACULTY_API_TOKEN")
 REQUEST_TIMEOUT = 30
 
+
 def print_status(message, status="INFO"):
     """Print formatted status message."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{timestamp}] {status}: {message}")
+
 
 def verify_config():
     """Verify required configuration is present."""
@@ -36,6 +38,7 @@ def verify_config():
     print_status(f"✅ API URL: {FACULTY_API_URL}")
     print_status(f"✅ API Token: {'*' * 20}...{FACULTY_API_TOKEN[-4:]}")
     return True
+
 
 def test_api_connection():
     """Test basic API connectivity."""
@@ -88,6 +91,7 @@ def test_api_connection():
         print_status(f"❌ Request error: {e}", "ERROR")
         return None
 
+
 def analyze_response(response):
     """Analyze and display API response data."""
     print_status("Analyzing API response...")
@@ -136,6 +140,7 @@ def analyze_response(response):
         preview = response.text[:200] + "..." if len(response.text) > 200 else response.text
         print_status(f"Response preview: {preview}")
 
+
 def main():
     """Main verification function."""
     print_status("=" * 60)
@@ -162,6 +167,7 @@ def main():
     print_status("-" * 40)
     print_status("✅ Faculty180 connection verification completed successfully!")
     print_status("You can now use this configuration in faculty180_to_drupal.py")
+
 
 if __name__ == "__main__":
     main()
