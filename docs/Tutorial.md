@@ -111,4 +111,6 @@ For each faculty ID from Step 2, hit a details endpoint like `/v1/users/{id}` or
 
 You did it! 🎊 This should give you a full faculty list + bios. If something's unclear, reply with specifics—I'll tweak it. Go crush that data! 💪
 
+&mdash; Grok
+
 <br>
