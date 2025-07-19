@@ -81,4 +81,6 @@ I'll explain the relevant URLs below, including how to navigate to them from the
 
 The main Faculty Activity Reporting (FAR) API documentation page for Interfolio/Faculty 180 is not explicitly listed in the references. However, documentation is available upon request 📩 during the sales process. For access, contact Interfolio support at [help@interfolio.com](mailto:help@interfolio.com) or visit [https://product-help.interfolio.com](https://product-help.interfolio.com).
 
+&mdash; Grok / ChatGPT
+
 <br>
